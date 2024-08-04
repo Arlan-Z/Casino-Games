@@ -167,11 +167,21 @@ body{
     font-size: 7.5vmin;
 }
 
+.main .game .header i{
+    margin-left: 1.25vmin;
+    color: rgb(30, 29, 29);
+}
+
 .main .game .field .box{
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%; 
     height: 100%; 
     border-radius: 1vmin;
     background: gray;
 }
 
+.main .game .field .box img{
+    width: 10vmin;
+}

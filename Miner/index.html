@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sapper</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div class="sidebar">
@@ -39,11 +40,11 @@
 
         <div class="game">
             <div class="header">
-                Mines
+                Mines <i class="fa-solid fa-bomb"></i>
             </div>
             <div class="field">
-                <div class="box"></div>
-                <div class="box"></div>
+                <div class="box"><img src="images/bomb.png"></div>
+                <div class="box"><img src="images/gem.png"></div>
                 <div class="box"></div>
                 <div class="box"></div>
                 <div class="box"></div>
@@ -75,5 +76,6 @@
             </div>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
