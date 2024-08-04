@@ -195,6 +195,10 @@ body{
     transition: 0.5s;
 }
 
+.active{
+    cursor: pointer;
+}
+
 .active:hover{
     filter: brightness(1.25);
     transform: scale(1.1);
@@ -221,7 +225,6 @@ body{
 
     100%{
         transform: scale(1);
-        background: rgb(105, 105, 116);
     }
 }
 
