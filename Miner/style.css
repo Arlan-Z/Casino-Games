@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Platypi:ital,wght@0,300..800;1,300..800&display=swap);
 
 *{
     margin: 0;
@@ -79,8 +80,98 @@ body{
 }
 
 .main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
     height: 100%;
     flex: 1;
     background: rgb(41, 41, 68);
+}
+
+.main .settings{
+    display: flex;
+    align-items: center;
+    justify-content:start;
+    flex-direction: column;
+
+    width: 50vmin;
+    height: 88vmin;
+    background: rgb(161, 161, 163);
+    padding: 1.5vmin;
+    margin-right: 2vmin;
+    gap: 2vmin;
+    border-radius: 2vmin;
+}
+
+.main .settings .box{
+    width: auto;
+}
+
+.main .settings .box p{
+    margin-bottom: 0.5vmin;
+}
+
+.main .settings .box input{
+    padding: 0.5vmin;
+    font-size: 4.5vmin;
+}
+
+.main .settings .box select{
+    width: 50vmin;
+    padding: 0.5vmin;
+    font-size: 4.5vmin;
+}
+
+.main .settings button{
+    width: 100%;
+    padding: 1vmin;
+    font-size: 3.5vmin;
+    font-weight: bold;
+    background: lightgreen;
+    border: none;
+    outline: none;
+    border-radius: 0.5vmin;
+}
+
+.main .game{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main .game .field{
+    display: grid;
+    padding: 2.5vmin 12.5vmin 1.5vmin;
+    gap: 1vmin;
+    width: 75vmin;
+    height: 75vmin;
+    background: rgb(207, 211, 211);
+    grid-template-columns: repeat(5, 1fr); 
+    grid-template-rows: repeat(5, 1fr); 
+    border-radius: 2vmin;
+}
+
+.main .game .header{
+    font-family: "Platypi", serif;
+    width: 100vmin;
+    height: 10vmin;
+    margin-bottom: 2vmin;
+    background: rgb(103, 89, 103);
+    color: white;
+    border-radius: 1vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 7.5vmin;
+}
+
+.main .game .field .box{
+    display: block;
+    width: 100%; 
+    height: 100%; 
+    border-radius: 1vmin;
+    background: gray;
 }
 
