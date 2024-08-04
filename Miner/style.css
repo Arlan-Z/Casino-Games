@@ -13,6 +13,11 @@ body{
     align-items: center;
     justify-content: center;
     height: 100vh;
+
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    user-select: none;
 }
 
 .sidebar{
@@ -101,6 +106,8 @@ body{
     width: 50vmin;
     height: 88vmin;
     background: rgb(71, 71, 101);
+    color: white;
+    font-weight: 600;
     padding: 1.5vmin;
     margin-right: 2vmin;
     gap: 2vmin;
@@ -147,7 +154,7 @@ body{
 .main .game .field{
     display: grid;
     padding: 2.5vmin 12.5vmin 1.5vmin;
-    gap: 1vmin;
+    gap: 2.5vmin;
     width: 75vmin;
     height: 75vmin;
     background: rgb(30, 28, 61);
@@ -176,6 +183,7 @@ body{
 }
 
 .main .game .field .box{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -183,8 +191,50 @@ body{
     height: 100%; 
     border-radius: 1vmin;
     background: rgb(71, 71, 101);
+    box-shadow: 0 0 4vmin rgba(255, 255, 255, 0.1);
+    transition: 0.5s;
+}
+
+.active:hover{
+    filter: brightness(1.25);
+    transform: scale(1.1);
+}
+
+.open{
+    animation: open 0.5s linear forwards;
+}
+
+.open img{
+    transform: scale(0);
+    animation: show 0.1s linear forwards;
+}
+
+@keyframes open{
+    0%{
+        transform: scale(1);
+        background: rgb(129, 129, 167);
+    }
+
+    50%{
+        transform: scale(1.1);
+    }
+
+    100%{
+        transform: scale(1);
+        background: rgb(105, 105, 116);
+    }
+}
+
+@keyframes show{
+    0%{
+        transform: scale(0);
+    }
+
+    100%{
+        transform: scale(1);
+    }
 }
 
 .main .game .field .box img{
-    width: 10vmin;
+    width: 75%;
 }
