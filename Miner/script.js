@@ -18,11 +18,13 @@ for(i = 0; i <= 25; i++){
 
 
 function playAnimation(box){
+    if(box.isOpened) return;
+    box.isOpened = true;
+
     var audio = new Audio("sounds/click.mp3");
     audio.play();
 
-    if(box.isOpened) return;
-    box.isOpened = true;
+
     img = document.createElement("img");
     if(box.isBomb) {
         img.src = "images/bomb.png";

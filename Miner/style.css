@@ -142,6 +142,35 @@ body{
     border: none;
     outline: none;
     border-radius: 0.5vmin;
+
+    transition: all 0.5s;
+}
+
+.main .settings button:hover{
+    filter: brightness(0.7);
+}
+
+.main .settings button:active{
+    transform: translateY(0.5vmin);
+}
+
+#bet-btn{
+    margin-bottom: 5vmin;
+}
+
+.main .settings .after input{
+    border: none;
+    outline: none;
+    background: rgb(63, 100, 63);
+    color: rgb(255, 255, 255);
+    box-shadow: 0 0 0.7vmin rgba(255, 255, 255, 0.2);
+    width: 50vmin;
+    padding: 0.5vmin;
+    font-size: 4.5vmin;
+}
+
+#cashout-btn{
+    box-shadow: 0 0 1vmin rgba(255, 255, 255, 0.4);
 }
 
 .main .game{
