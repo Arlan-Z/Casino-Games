@@ -11,7 +11,10 @@ const betBtn = document.getElementById("bet-btn");
 const afterElements = document.querySelectorAll(".after")
 const beforeElements = document.querySelectorAll(".before")
 
-var money = 0;
+var money = localStorage.getItem('money');
+if(money){
+    money = parseFloat(money);
+} else money = 0;
 var isLose = false;
 
 var remainingBoxes = 25;
@@ -73,8 +76,8 @@ function bet(){
             minesCount--;
         } else {
             boxes[i].isBomb = false;
-            boxCnt--;
         }
+        boxCnt--;
 
         boxes[i].addEventListener("click", () => playAnimation(boxes[i]));
     }
@@ -127,13 +130,14 @@ function changeMoney(value, sub = 1){
     value = value * sub;
     money = money += value;
     moneyText.innerHTML = money.toFixed(4);
-    console.log(money);
+    localStorage.setItem('money', money);
 }
 
 function increaseCash(){
     cash = betField.value * (1 + (mines.value) / (remainingBoxes + 1 - mines.value));
     remainingBoxes--;
     profitField.value = cash.toFixed(4);
+    if(remainingBoxes == mines.value) cashout();
 }
 
 function cashout(){
