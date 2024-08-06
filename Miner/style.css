@@ -63,6 +63,7 @@ body{
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     color: rgba(255, 255, 255, 0.79);
+    transition: 0.5s;
 }
 
 .sidebar .info{
@@ -169,6 +170,10 @@ body{
     font-size: 4.5vmin;
 }
 
+#profit{
+    cursor: default;
+}
+
 #cashout-btn{
     box-shadow: 0 0 1vmin rgba(255, 255, 255, 0.4);
 }
@@ -224,8 +229,20 @@ body{
     transition: 0.5s;
 }
 
+.disabled{
+    filter: brightness(0.25);
+}
+
 .active{
     cursor: pointer;
+}
+
+.before{
+    transition: 0.5s;
+}
+
+.after{
+    display: none;
 }
 
 .active:hover{
@@ -240,6 +257,14 @@ body{
 .open img{
     transform: scale(0);
     animation: show 0.1s linear forwards;
+}
+
+.add-money:hover{
+    filter: brightness(0.8);
+}
+
+.add-money:active{
+    transform: translateY(1vmin);
 }
 
 @keyframes open{
