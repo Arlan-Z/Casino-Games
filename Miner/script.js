@@ -149,8 +149,11 @@ function addMoney(){
     let amount = prompt("Enter Amount:");
     if (amount == null || amount == "") {
         console.log("operation cancelled");
-      } else {
+      } else if(amount != 0){
         console.log(amount + "$ added");
         changeMoney(amount);
+      } else{
+        console.log("Money resetted to 0");
+        changeMoney(money, -1);
       }
 }
