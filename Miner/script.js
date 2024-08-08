@@ -34,6 +34,7 @@ function playAnimation(box){
     box.isOpened = true;
 
     var audio = new Audio("sounds/click.mp3");
+    audio.volume = 0.75;
     audio.play();
 
 
