@@ -124,14 +124,34 @@ body{
 }
 
 .main .settings .box input{
+    border: 2px solid rgba(255, 255, 255, 0.461);
+    outline: none;
     padding: 0.5vmin;
     font-size: 4.5vmin;
+    background: rgb(30, 28, 61);
+    color: white;
+    border-radius: 0.5vmin;
+}
+
+.main .settings .box input:disabled{
+    opacity: 1;
+    filter: saturate(50%);
 }
 
 .main .settings .box select{
+    border: 2px solid rgba(255, 255, 255, 0.461);
+    outline: none;
     width: 50vmin;
     padding: 0.5vmin;
     font-size: 4.5vmin;
+    background: rgb(30, 28, 61);
+    color: white;
+    border-radius: 0.5vmin;
+}
+
+.main .settings .box select:disabled{
+    opacity: 1;
+    filter: saturate(50%);
 }
 
 .main .settings button{
