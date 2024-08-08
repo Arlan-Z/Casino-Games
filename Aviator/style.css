@@ -216,6 +216,8 @@ body{
     align-items: center;
     justify-content: start;
     flex-direction: column;
+
+    box-shadow: inset 0 0 10vmin rgba(0, 0, 0, 0.15);
 }
 
 .main .game .field .factor{
@@ -247,25 +249,21 @@ body{
     text-shadow: 0 0 1vmin rgba(0, 0, 0, 0.452);
     margin-top: 1.5vmin;
     font-size: 20vmin;
-    animation: flying 2s linear infinite;
+    animation: flying 2s ease-in-out infinite;
     z-index: 1;
 }
 
 @keyframes flying{
     0%{
-        transform: translateY(0);
+        transform: translateY(0vmin);
     }
 
-    25%{
-        transform: translateY(1vmin);
-    }
-    
     50%{
-        transform: translateY(-2vmin);
+        transform: translateY(10vmin);
     }
 
     100%{
-        transform: translateY(0);
+        transform: translateY(0vmin);
     }
 }
 
@@ -279,7 +277,7 @@ body{
     z-index: 0;
 
     box-shadow:0 0 1vmin rgb(0, 0, 0, 0.1), inset 0 0 1vmin rgb(0, 0, 0, 0.1);
-    animation: stretch 2s linear infinite;
+    animation: stretch 2s ease infinite;
     transition: 0.5s;
     
 }
@@ -290,11 +288,7 @@ body{
     }
     
     50%{
-        transform: scaleX(0.9);
-    }
-
-    75%{
-        transform: scaleX(1.25);
+        transform: scaleX(2);
     }
 
     100%{
@@ -319,49 +313,6 @@ body{
 .main .game .header i{
     margin-left: 2.5vmin;
     color: rgb(138, 164, 156);
-}
-
-.main .game .field .box{
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%; 
-    height: 100%; 
-    border-radius: 1vmin;
-    background: rgb(71, 71, 101);
-    box-shadow: 0 0 4vmin rgba(255, 255, 255, 0.1);
-    transition: 0.5s;
-}
-
-.disabled{
-    filter: brightness(0.25);
-}
-
-.active{
-    cursor: pointer;
-}
-
-.before{
-    transition: 0.5s;
-}
-
-.after{
-    display: none;
-}
-
-.active:hover{
-    filter: brightness(1.25);
-    transform: scale(1.1);
-}
-
-.open{
-    animation: open 0.5s linear forwards;
-}
-
-.open img{
-    transform: scale(0);
-    animation: show 0.1s linear forwards;
 }
 
 .add-money:hover{
