@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="../images/icon.png" type="image/png">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="money">
+            <div class="text" id="money">
+                100.00
+            </div>
+            <div class="add-money" onclick="addMoney()">
+                +
+            </div>
+        </div>
+        <div class="info">
+            <div class="box">
+                Mines
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="settings">
+            <div class="box">
+                <p>Bet Amount</p>
+                <input type="text" name="bet" id="bet" class="before" value="1">
+            </div>
+            
+            <div class="box">
+                <p>Cashout At</p>
+                <input type="text" name="cashout-at" id="cashout-at">
+            </div>
+            
+            <button id="bet-btn" onclick="bet()">Bet</button>
+            <div class="box after">
+                <p>Total Profit</p>
+                <input type="text" name="profit" id="profit" value="0" readonly>
+            </div>
+            <button id="cashout-btn" class="after" onclick="cashout()">Cashout</button>
+        </div>
+
+        <div class="game">
+            <div class="header">
+                Aviator<i class="fa-solid fa-plane-departure"></i>
+            </div>
+            <div class="field" id="field">
+                <div class="factor" id="factor">
+                    100.00<i class="fa-solid fa-xmark"></i>
+                </div>
+
+                <div class="plane" id="plane">
+                    <i class="fa-solid fa-plane-up"></i>
+                </div>
+                
+                <div class="line" id="line">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
