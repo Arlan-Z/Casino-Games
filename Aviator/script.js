@@ -17,12 +17,13 @@ if(money){
 } else money = 0;
 changeMoney(0);
 
-let ratio = 0;
-let max = 0.50;
+let ratio = 1;
+let max = 0;
 
 let isOut = true;
 
 async function flyAway(){
+    profit.value = "0.00";
     isOut = true;
     changeBtnState();
     plane.style.color = "rgb(104, 104, 104)";
@@ -48,39 +49,66 @@ async function flyAway(){
 
 
 async function start(){
+    if(bet.value <= 0 || (cashoutAt.value < 1 && cashoutAt.value != "") || bet.value > money) return;
+
     if(!isOut){
         cashout();
         return;
     }
+    let del = 300;
+
     changeMoney(bet.value, -1);
     isOut = false;
-    ratio = 0;
+    ratio = 1;
     factor.classList.remove("lose");
     changeBtnState();
     plane.style.color = "rgb(130, 206, 122)";
     line.style.background = "rgba(100, 226, 104, 0.548)";
     await delay(300);
+
+    max = await unsafeSimulateResult(generateGameHash());
+    console.log(max);
+
     changeBtnState("Cashout");
-    while(ratio <= max){
+    while(ratio < max){
         if(!isOut) profit.value = (bet.value * ratio).toFixed(2);
-        if(ratio >= cashoutAt.value) cashout();
+        if(ratio >= cashoutAt.value && cashoutAt.value != "") cashout();
         factor.innerHTML = ratio.toFixed(2) + '<i class="fa-solid fa-xmark"></i>';
         ratio += 0.01
-        await delay(100);
+        del = del * 0.99;
+        await delay(1 + del);
     }
     flyAway();
 }
 
 
 function changeBtnState(text = ""){
-    if(text == ""){
-        btn.disabled = true;
-        btn.innerHTML = "Wait";
+    btn.disabled = !text; 
+    btn.innerHTML = text || "Wait"; 
+}
+
+function generateGameHash(){
+    const randomBytes = new Uint8Array(32);
+    window.crypto.getRandomValues(randomBytes);
+  
+    let gameHash = '';
+    for (let i = 0; i < randomBytes.length; i++) {
+      gameHash += randomBytes[i].toString(16).padStart(2, '0');
     }
-    else{
-        btn.disabled = false;
-        btn.innerHTML = text;
+  
+    return gameHash;
+}
+
+function unsafeSimulateResult(gameHash) {
+    let h = gameHash + "";  
+    let hNum = parseInt(h.substring(0, 13), 16);
+  
+    if (hNum % 33 === 0) {
+      return 1;
     }
+  
+    const e = Math.pow(2, 52); 
+    return (((100 * e - hNum) / (e - hNum)) / 100);
 }
 
 function cashout(){
@@ -95,6 +123,19 @@ function changeMoney(value, sub = 1){
     money = money += value;
     moneyText.innerHTML = money.toFixed(4);
     localStorage.setItem('money', money);
+}
+
+function addMoney(){
+    let amount = prompt("Enter Amount:");
+    if (amount == null || amount == "") {
+        console.log("operation cancelled");
+      } else if(amount != 0){
+        console.log(amount + "$ added");
+        changeMoney(amount);
+      } else{
+        console.log("Money resetted to 0");
+        changeMoney(money, -1);
+      }
 }
 
 function delay(ms) {

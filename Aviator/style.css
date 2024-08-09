@@ -148,6 +148,7 @@ input::-webkit-inner-spin-button {
     user-select: none;
 }
 
+
 .main .settings .box select{
     border: 2px solid rgba(255, 255, 255, 0.461);
     outline: none;
