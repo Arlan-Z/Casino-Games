@@ -124,18 +124,28 @@ body{
 }
 
 .main .settings .box input{
-    border: 2px solid rgba(255, 255, 255, 0.461);
+    border: 2px solid rgb(103, 102, 102);
+    box-shadow: 0 0 1vmin rgba(0, 0, 0, 0.491);
     outline: none;
     padding: 0.5vmin;
     font-size: 4.5vmin;
-    background: rgb(30, 28, 61);
+    background: rgb(26, 26, 27);
     color: white;
     border-radius: 0.5vmin;
+    appearance: none;
 }
 
-.main .settings .box input:disabled{
-    opacity: 1;
-    filter: saturate(50%);
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#profit{
+    border: 2px solid rgb(103, 102, 102);
+    background: rgb(103, 102, 102);
+    box-shadow:inset 0 0 1vmin rgba(0, 0, 0, 0.242);
+    user-select: none;
 }
 
 .main .settings .box select{
@@ -168,27 +178,16 @@ body{
     transition: all 0.5s;
 }
 
-.main .settings button:hover{
+.main .settings button:enabled:hover{
     filter: brightness(0.7);
 }
 
-.main .settings button:active{
+.main .settings button:enabled:active{
     transform: translateY(0.5vmin);
 }
 
 #bet-btn{
     margin-bottom: 5vmin;
-}
-
-.main .settings .after input{
-    border: none;
-    outline: none;
-    background: rgb(63, 100, 63);
-    color: rgb(255, 255, 255);
-    box-shadow: 0 0 0.7vmin rgba(255, 255, 255, 0.2);
-    width: 50vmin;
-    padding: 0.5vmin;
-    font-size: 4.5vmin;
 }
 
 #profit{
@@ -218,12 +217,14 @@ body{
     flex-direction: column;
 
     box-shadow: inset 0 0 10vmin rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    position: relative;
 }
 
 .main .game .field .factor{
     color: white;
     font-size: 7.5vmin;
-    font-weight: 500;
+    font-weight: 700;
 
     width: 30vmin;
     height: 30vmin;
@@ -238,19 +239,40 @@ body{
     box-shadow: 0 0 1.5vmin rgba(255, 255, 255, 0.2), inset 0 0 2vmin rgba(0, 0, 0, 0.2);
 
     margin-top: 2vmin;
+    z-index: 2;
+
+    transition: 0.3s ease;
 }
 
 .main .game .field .factor i{
     font-size: 5vmin;
 }
 
+.main .game .field .factor.lose{
+    background: rgb(224, 73, 73);
+    color: rgb(94, 9, 9);
+}
+
 .main .game .field .plane{
-    color: rgb(130, 206, 122);
+    color: rgb(104, 104, 104);
     text-shadow: 0 0 1vmin rgba(0, 0, 0, 0.452);
     margin-top: 1.5vmin;
     font-size: 20vmin;
-    animation: flying 2s ease-in-out infinite;
     z-index: 1;
+
+    transition: all 0.5s ease, filter 0s, color 0.3s linear;
+    position: absolute;
+    top: 30vmin;
+    
+}
+
+button:disabled{
+    cursor:not-allowed;
+    filter: brightness(0.75);
+}
+
+.main .game .field .plane.anim{
+    animation: flying 2s ease-in-out infinite;
 }
 
 @keyframes flying{
@@ -269,17 +291,21 @@ body{
 
 .main .game .field .line{
     width: 2vmin;
-    height: 30.5vmin;
+    height: 45vmin;
     background: rgba(255, 255, 255, 0.548);
     position: absolute;
 
-    top: 65vmin;
+    top: 47.5vmin;
     z-index: 0;
 
     box-shadow:0 0 1vmin rgb(0, 0, 0, 0.1), inset 0 0 1vmin rgb(0, 0, 0, 0.1);
+    transition: all 1s ease, filter 0s, background 0.3s linear;
+
+    border-radius: 5vmin;
+}
+
+.main .game .field .line.anim{
     animation: stretch 2s ease infinite;
-    transition: 0.5s;
-    
 }
 
 @keyframes stretch{
@@ -295,6 +321,31 @@ body{
         transform: scaleX(1);
     }
 }
+
+.main .game .field .line.end{
+    top: -120vmin;
+    border-radius: 10vmin;
+    height: 0;
+}
+
+.main .game .field .plane.end{
+
+    top: -50vmin;
+    height: 0;
+}
+
+.main .game .field .line.end.restart{
+    top: 79.5vmin;
+}
+
+.main .game .field .plane.end.restart{
+    top: 80vmin;
+}
+
+.restart{
+    filter: opacity(0);
+}
+
 
 .main .game .header{
     font-family: "Platypi", serif;

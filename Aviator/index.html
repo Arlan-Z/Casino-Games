@@ -20,7 +20,7 @@
         </div>
         <div class="info">
             <div class="box">
-                Mines
+                Aviator
             </div>
         </div>
     </div>
@@ -28,20 +28,20 @@
         <div class="settings">
             <div class="box">
                 <p>Bet Amount</p>
-                <input type="text" name="bet" id="bet" class="before" value="1">
+                <input type="number" name="bet" id="bet" class="before" value="1" min="0.01">
             </div>
             
             <div class="box">
                 <p>Cashout At</p>
-                <input type="text" name="cashout-at" id="cashout-at">
+                <input type="text" name="cashout-at" id="cashout-at" value="2.00">
             </div>
 
             <div class="box">
                 <p>Profit</p>
-                <input type="text" name="profit" id="profit" value="0">
+                <input type="text" name="profit" id="profit" value="0.00" onmousedown="return false" readonly>
             </div>
             
-            <button id="bet-btn" onclick="bet()">Bet</button>
+            <button id="btn" onclick="start()">Bet</button>
         </div>
 
         <div class="game">
@@ -50,14 +50,14 @@
             </div>
             <div class="field" id="field">
                 <div class="factor" id="factor">
-                    100.00<i class="fa-solid fa-xmark"></i>
+                    0.00<i class="fa-solid fa-xmark"></i>
                 </div>
 
-                <div class="plane" id="plane">
+                <div class="plane anim" id="plane">
                     <i class="fa-solid fa-plane-up"></i>
                 </div>
                 
-                <div class="line" id="line">
+                <div class="line anim" id="line">
                     
                 </div>
             </div>
