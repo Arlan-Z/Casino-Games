@@ -10,6 +10,8 @@ const bet = document.getElementById("bet");
 const profit = document.getElementById("profit")
 const cashoutAt = document.getElementById("cashout-at");
 
+const inputs = document.querySelectorAll(".input")
+
 const moneyText = document.getElementById("money");
 var money = localStorage.getItem('money');
 if(money){
@@ -44,18 +46,20 @@ async function flyAway(){
         el.classList.toggle("restart");
     });
 
+    inputs.forEach((el) => {el.disabled = false;});
     changeBtnState("Bet");
 }
 
 
 async function start(){
-    if(bet.value <= 0 || (cashoutAt.value < 1 && cashoutAt.value != "") || bet.value > money) return;
-
+    if(bet.value <= 0 || (cashoutAt.value < 1 && cashoutAt.value != "") || (bet.value > money && isOut)) return;
     if(!isOut){
         cashout();
         return;
     }
     let del = 300;
+
+    inputs.forEach((el) => {el.disabled = true;});
 
     changeMoney(bet.value, -1);
     isOut = false;
@@ -116,6 +120,8 @@ function cashout(){
     changeBtnState();
     changeMoney(profit.value);
     profit.value = "0.00";
+
+    inputs.forEach((el) => {el.disabled = false;});
 }
 
 function changeMoney(value, sub = 1){

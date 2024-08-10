@@ -27,6 +27,11 @@ let isSpinning = false;
 function spin() {
     if(!check()) return;
 
+    input.forEach((el) => {
+        el.disabled = true;
+    });
+    
+
     var audio = new Audio("sounds/spin.mp3");
     audio.play();
 
@@ -48,6 +53,10 @@ function spin() {
         if((360 - angle % 360) <= (chance * 360)){
             changeMoney(cash.value);
         }
+
+        input.forEach((el) => {
+            el.disabled = false;
+        });
     }, { once: true });
     
 }
