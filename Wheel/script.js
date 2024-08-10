@@ -54,7 +54,7 @@ function spin() {
 
 function calculate(){
     if(bet.value <= 0 || cash.value <= 0) return;
-    if(bet.value >= cash.value) return;
+    if(parseInt(bet.value) >= parseInt(cash.value)) return;
     chance = bet.value / cash.value - 0.015;
     chance = chance.toFixed(4);
     root.style.setProperty('--chance', `${chance * 100}%`);
@@ -69,7 +69,7 @@ function changeMoney(value, sub = 1){
 
 function check(){
     if(isSpinning) return false; 
-    if(bet.value >= cash.value) return false;
+    if(parseInt(bet.value) >= parseInt(cash.value)) return false;
     if(chance >= 1 || chance <= 0) return false;
     if(bet.value > money) return false;
     changeMoney(bet.value, -1);

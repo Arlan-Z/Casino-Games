@@ -64,11 +64,11 @@ async function start(){
     changeBtnState();
     plane.style.color = "rgb(130, 206, 122)";
     line.style.background = "rgba(100, 226, 104, 0.548)";
-    await delay(300);
 
     max = await unsafeSimulateResult(generateGameHash());
-    console.log(max);
+    factor.innerHTML = ratio.toFixed(2) + '<i class="fa-solid fa-xmark"></i>';
 
+    await delay(300);
     changeBtnState("Cashout");
     while(ratio < max){
         if(!isOut) profit.value = (bet.value * ratio).toFixed(2);
@@ -103,7 +103,7 @@ function unsafeSimulateResult(gameHash) {
     let h = gameHash + "";  
     let hNum = parseInt(h.substring(0, 13), 16);
   
-    if (hNum % 33 === 0) {
+    if (hNum % 5 === 0) {
       return 1;
     }
   
