@@ -20,6 +20,8 @@ var isLose = false;
 var remainingBoxes = 25;
 var cash = 0;
 
+var winChance = 1;
+
 changeMoney(0);
 for(i = 0; i < 25; i++){
     let box = document.createElement("div");
@@ -95,6 +97,7 @@ function bet(){
 function gameEnd(){
     isLose = false;
     const boxes = field.children;
+    winChance = 1;
     profitField.value = 0;
     cash = 0;
     for (let i = 0; i < boxes.length; i++) {
@@ -135,7 +138,9 @@ function changeMoney(value, sub = 1){
 }
 
 function increaseCash(){
-    cash = betField.value * (1 + (mines.value) / (remainingBoxes + 1 - mines.value));
+    winChance = ((remainingBoxes - mines.value) / remainingBoxes) * winChance;
+
+    cash = betField.value * (1 + (1 - winChance) / (winChance * 1.2));
     remainingBoxes--;
     profitField.value = cash.toFixed(4);
     if(remainingBoxes == mines.value) cashout();
