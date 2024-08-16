@@ -12,11 +12,12 @@ const cashoutAt = document.getElementById("cashout-at");
 
 const inputs = document.querySelectorAll(".input")
 
+var flyAway_sound = new Audio("sounds/flyaway.mp3");
+flyAway_sound.volume = 0.5;
+
 const moneyText = document.getElementById("money");
 var money = localStorage.getItem('money');
-if(money){
-    money = parseFloat(money);
-} else money = 0;
+
 changeMoney(0);
 
 let ratio = 1;
@@ -25,6 +26,8 @@ let max = 0;
 let isOut = true;
 
 async function flyAway(){
+    flyAway_sound.play();
+
     profit.value = "0.00";
     isOut = true;
     changeBtnState();
@@ -125,6 +128,11 @@ function cashout(){
 }
 
 function changeMoney(value, sub = 1){
+    money = localStorage.getItem('money');
+    if(money){
+        money = parseFloat(money);
+    } else money = 0;
+
     value = value * sub;
     money = money += value;
     moneyText.innerHTML = money.toFixed(4);

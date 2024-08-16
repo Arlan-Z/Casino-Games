@@ -10,9 +10,7 @@ const btn = document.getElementById("spin-btn");
 
 const moneyText = document.getElementById("money");
 var money = localStorage.getItem('money');
-if(money){
-    money = parseFloat(money);
-} else money = 0;
+
 changeMoney(0);
 
 input.forEach((el) => {
@@ -70,6 +68,11 @@ function calculate(){
 }
 
 function changeMoney(value, sub = 1){
+    money = localStorage.getItem('money');
+    if(money){
+        money = parseFloat(money);
+    } else money = 0;
+
     value = value * sub;
     money = money += value;
     moneyText.innerHTML = money.toFixed(4);

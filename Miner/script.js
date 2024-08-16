@@ -12,9 +12,7 @@ const afterElements = document.querySelectorAll(".after")
 const beforeElements = document.querySelectorAll(".before")
 
 var money = localStorage.getItem('money');
-if(money){
-    money = parseFloat(money);
-} else money = 0;
+
 var isLose = false;
 
 var remainingBoxes = 25;
@@ -131,6 +129,11 @@ function gameEnd(){
 }
 
 function changeMoney(value, sub = 1){
+    money = localStorage.getItem('money');
+    if(money){
+        money = parseFloat(money);
+    } else money = 0;
+
     value = value * sub;
     money = money += value;
     moneyText.innerHTML = money.toFixed(4);
