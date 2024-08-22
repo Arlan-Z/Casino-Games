@@ -26,11 +26,11 @@ let max = 0;
 let isOut = true;
 
 async function flyAway(){
-    flyAway_sound.play();
 
     profit.value = "0.00";
     isOut = true;
     changeBtnState();
+    flyAway_sound.play();
     plane.style.color = "rgb(104, 104, 104)";
     line.style.background = "rgba(255, 255, 255, 0.548)";
 

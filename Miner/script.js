@@ -150,6 +150,7 @@ function increaseCash(){
 }
 
 function cashout(){
+    if(remainingBoxes == 25) return;
     changeMoney(cash);
     gameEnd();
 }
